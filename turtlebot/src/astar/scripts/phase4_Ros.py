@@ -57,22 +57,22 @@ def angle_approximation(a):
         return a
     return a
 
-orientation = 34        
+orientation = 0        
 k = angle_approximation(orientation)                   # real value 
 
 
 # Everything in m.  obstacle space is 10*10 m. Converted in cm
-R1 = 30
-R2 = 60
+R1 = 50
+R2 = 100
 
 
 #ind1 = 2  #int(input('enter x coordinate of starting node'))  # 5
 #ind2 = 2  #int(input('enter y coordinate of starting node'))  # 5
-ind = (5,5,k)
+ind = (95,20,k)
 
 #goal1 = 20  #int(input('enter x coordinate of goal node'))  # 295
 #goal2 = 20  #int(input('enter y coordinate of goal node'))  # 195 
-goal = (60,60)
+goal = (25,95)
 
 #d = int(input())
 
@@ -81,33 +81,33 @@ goal = (60,60)
 cost_2_come[int(2*ind[0])][int(2*ind[1])][int((ind[2])/5)] = 0
 
 
-r = 0
-c = 0
+r = 5
+c = 5
 
 b = r+c
 
-def obstacle_here(y,x):
+def obstacle_here(j,i):
     
     
-    if y >= 22.5 and y<= 37.5 and x >= 12.5 and x <= 27.5:
+    if j >= 22.5 - b and j<= 37.5 + b and i >= 12.5 - b and i <= 27.5 + b:
         return True
     
-    if y <= 2.5 and y<= 17.5 and x >= 37.5 and x <= 57.5:
+    if j <= 2.5 - b and j<= 17.5 + b and i >= 37.5 - b and i <= 57.5 + b:
         return True
     
-    if y >= 82.5 and y <= 97.5 and x >= 37.5 and x >= 57.5:
+    if j >= 82.5 - b and j <= 97.5 +b and i >= 37.5 - b and i >= 57.5 + b:
         return True
     
-    if (y-70)**2 + (x-20)**2 <= 100:
+    if (j-70)**2 + (i-20)**2 <= 100 + b:
         return True
     
-    if (y-50)**2 + (x-50)**2 <= 100:
+    if (j-50)**2 + (i-50)**2 <= 100 + b:
         return True 
     
-    if (y-30)**2 + (x-80)**2 <= 100:
+    if (j-30)**2 + (i-80)**2 <= 100 + b:
         return True
     
-    if (y-70)**2 + (x-80)**2 <= 100:
+    if (j-70)**2 + (i-80)**2 <= 100 + b:
         return True
     
     
@@ -129,7 +129,7 @@ def action_one(i,j,k,R1,R2):
     u2 = (2*3.14*r*R1)/60  
     
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
     
     theta = k 
     theta = angle_approximation(theta)
@@ -137,7 +137,7 @@ def action_one(i,j,k,R1,R2):
     point2 = j
 
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 + u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 + u2)*(math.sin(math.radians(theta))*dt)
@@ -186,13 +186,14 @@ def action_two(i,j,k,R1,R2):
     u2 = (2*3.14*r*0)/60
     
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
+
     theta = k 
     theta = angle_approximation(theta)
     point1 = i
     point2 = j
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 +u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 +u2)*(math.sin(math.radians(theta))*dt)
@@ -242,14 +243,14 @@ def action_three(i,j,k,R1,R2):
     u2 = (2*3.14*r*R1)/60  
     
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
     
     theta = k 
     theta = angle_approximation(theta)
     point1 = i
     point2 = j
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 +u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 +u2)*(math.sin(math.radians(theta))*dt)
@@ -298,14 +299,14 @@ def action_four(i,j,k,R1,R2):
     u2 = (2*3.14*r*R2)/60    
     
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
     
     theta = k 
     theta = angle_approximation(theta)
     point1 = i
     point2 = j
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 +u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 +u2)*(math.sin(math.radians(theta))*dt)
@@ -353,14 +354,14 @@ def action_five(i,j,k,R1,R2):
     u2 = (2*3.14*r*0)/60  
     
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
     
     theta = k 
     theta = angle_approximation(theta)
     point1 = i
     point2 = j
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 +u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 +u2)*(math.sin(math.radians(theta))*dt)
@@ -409,14 +410,14 @@ def action_six(i,j,k,R1,R2):
     u2 = (2*3.14*r*R2)/60
 
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
     
     theta = k 
     theta = angle_approximation(theta)
     point1 = i
     point2 = j
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 +u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 +u2)*(math.sin(math.radians(theta))*dt)
@@ -466,14 +467,14 @@ def action_seven(i,j,k,R1,R2):
     u2 = (2*3.14*r*R2)/60   
     
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
 
     theta = k 
     theta = angle_approximation(theta)
     point1 = i
     point2 = j
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 +u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 +u2)*(math.sin(math.radians(theta))*dt)
@@ -522,14 +523,14 @@ def action_eight(i,j,k,R1,R2):
     u2 = (2*3.14*r*R1)/60   
     
     v = (r/2)*((u1/r)+ (u2/r))*0.1
-    w = (r/l)*((u2/r) - (u1/r))
+    w = (r/l)*((u1/r) - (u2/r))*0.023
     
     theta = k 
     theta = angle_approximation(theta)
     point1 = i
     point2 = j
         
-    for iterations in range(25):   # for 1 sec :- 0.05*20
+    for iterations in range(20):   # for 1 sec :- 0.05*20
 
         dj = (r/2)*(u1 +u2)*(math.cos(math.radians(theta))*dt)
         di = (r/2)*(u1 +u2)*(math.sin(math.radians(theta))*dt)
@@ -666,6 +667,8 @@ parent_map = {}
 velocity_map = {}
 parent_map[ind] = None
 
+goal_ind = False
+
 while len(index_queue) != 0 and not breakwhile:
     node = index_queue[0]
     velocity = velocities_queue[0]
@@ -728,6 +731,10 @@ while len(index_queue) != 0 and not breakwhile:
 end_time = time.clock()
 print(end_time - start_time)
 
+if not goal_ind:
+	print("please try this goal point with other python script : phase4_ros.py  which has smaller step size and is more precise")
+
+
 path_list = []
 parent = parent_map[goal_ind]
 path_list.append(goal_ind)
@@ -756,17 +763,25 @@ def talker(pub):
         msg.linear.x = vel_path[i][0]
         msg.angular.z = vel_path[i][1]
         pub.publish(msg)
+        time_diff = 0
+        start_time = time.clock()
+        while time_diff <= 8.5:
+            pub.publish(msg)
+            current_time = time.clock()
+            time_diff = current_time - start_time    
+
         
 if __name__ == '__main__':
-    pub = rospy.Publisher('/cmd_vel_mux/input/navi', Twist, queue_size = 10)
+    pub = rospy.Publisher('/cmd_vel', Twist, queue_size = 10)
     rospy.init_node('vel_astar', anonymous = True)
     
     try:
-        rate = rospy.Duration.time(25)
+        
         while not rospy.is_shutdown():
             talker(pub)
-            rate.sleep()
+            
             
     except rospy.ROSInterruptException:
         pass
+            
             
