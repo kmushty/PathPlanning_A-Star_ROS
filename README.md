@@ -1,21 +1,25 @@
-# A_star- simulation of turtlebot in ROS
+# A_star Ros simulation of turtlebot
 
-The scripts (inside the turtlebot package can be run seperately as the publisher node is included 
-They can be executed by :- python3 <name_of_the_script>
+This project is the execution of Autonomous path planning on the differential driveturtlebot robot. The algorithm used is a serach algorithm called A-star which is an optimal discrete planning. Here start position and goal position is preset. There are several random obstacles and the bot plans the most optimal way to the goal position. For this simulation non-holonomic constrainst are given to the robot which means that it cannot move in y-direction independently.
 
-In this project phase 3 is implemented onto turtlebot3 using ros.
-The entire package is included in the zip file.
-The name of node is astar and it publishes topic on /cmd_vel.
-The nodes are constantly published according to the step size.
-Ros publish 15~20 values in one sec hence the linear velocities are scaled accordingly.
-The action space taken for algorithm is scaled (multiplied) to factor of 10 and is calculated for exact dimensions of turtlebot
+## Demonstrations
 
-To visulise the simulation gazebo is used and the a seperate map called map.xacro is used.
+[![A-star gif](media/A-star.gif)]
+[![Astar gif](media/Astar.gif)]
 
-The RPMs for the turtlebot taken are 50 and 100
+## Prerequisites
 
-FOR VIDEO 1 :- SCRIPT phase4_ros.py works best
-FOR VIDEO 2 :- SCRIPT phase4_Ros.py works best
-although phase4_ros.py is the main code and is executable for all valid nodes, phase4_Ros.py works faster for video2.
+ROS kinetic or ROS melodic is required to launch the simulation.After cloning the repository the turtlebot folder can be used as it is as a ROS workspace. 
 
-please export turtlebot burger before launching the file.
+## Astar Execution
+
+[![Flowchart1 png](media/Flowchart1.png)]
+[![Flowchart2 png](media/Flowchart2.png)]
+
+## Differential drive equations
+
+```
+x_dot = r*(ul + ur)*cos(theta)/2
+y_dot = r*(ul + ur)*sin(theta)/2
+theta_dot = r*(ur - ul)/l
+```
