@@ -1,6 +1,6 @@
 # A-star Path Planning simulation of TurtleBot using ROS
 
-This project is the execution of Autonomous path planning on the differential driveturtlebot robot. The algorithm used is a serach algorithm called A-star which is an optimal discrete planning. Here start position and goal position is preset. There are several random obstacles and the bot plans the most optimal way to the goal position. For this simulation non-holonomic constrainst are given to the robot which means that it cannot move in y-direction independently.
+This project is the execution of Autonomous path planning on the differential drive turtlebot. The algorithm used is a search algorithm called A-star which is an optimal discrete planning. There are several random obstacles and the bot plans the most optimal way to the goal position. For this simulation non-holonomic constrainst are given to the robot which means that it cannot move in y-direction independently.
 
 ## Differential drive equations
 
