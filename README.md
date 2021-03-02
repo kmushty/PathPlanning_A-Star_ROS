@@ -4,8 +4,8 @@ This project is the execution of Autonomous path planning on the differential dr
 
 ## Demonstrations
 
-[![A-star gif](media/A-star.gif)]
-[![Astar gif](media/Astar.gif)]
+![A-star gif](media/A-star.gif)
+![Astar gif](media/Astar.gif)
 
 ## Prerequisites
 
