@@ -13,8 +13,7 @@ ROS kinetic or ROS melodic is required to launch the simulation.After cloning th
 
 ## Astar Execution
 
-![Flowchart1 png](media/Flowchart1.png)
-![Flowchart2 png](media/Flowchart2.png)
+![Flowchart jpg](media/Flowchart.jpg)
 
 ## Differential drive equations
 
